@@ -13,12 +13,9 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 'Fira Sans Condensed', Arial, sans-serif;
   font-size: 18px;
-  background-color: #1b1919;
-  /*добавил два свойства для центрирования контента по центру страницы*/
-  display: grid;
-  justify-content: center;
+  background-color: rgb(27 25 25);
 }
 
 h1,
@@ -40,38 +37,25 @@ ol {
   list-style: none;
 }
 
-/*мои стили*/
+/*сверху дефолтные стили, дальше мои стили*/
 
 .content {
   display: grid;
   grid-template-columns: 711px 399px;
   gap: 30px;
   align-content: center;
+  align-items: end;
+  justify-content: center;
+  height: 100%;
 }
 
-.search-form {
+.result {
   display: grid;
-  grid-template-columns: 225px 212px 194px;
-  gap: 40px;
-  justify-content: start;
-}
-
-.content__list {
-  display: grid;
-  gap: 30px;
-  height: 298px;
-  overflow: auto;
-  overflow-x: hidden;
-}
-
-.content__details {
-  display: grid;
-  width: 100%;
-  row-gap: 26px;
+  row-gap: 14px;
 }
 
 .result__video-container {
-  margin-bottom: 16px;
+  position: relative;
   width: 711px;
   height: 386px;
 }
@@ -82,17 +66,162 @@ ol {
   height: 100%;
 }
 
+.search-form {
+  display: grid;
+  grid-template-columns: 225px 212px 194px;
+  gap: 40px;
+  justify-content: start;
+  align-items: end;
+}
+
+.search-form__fieldset {
+  display: grid;
+  grid-template-rows: 27px 27px;
+  border: none;
+}
+
+.search-form__fieldset-title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.search-form__label {
+  display: inline-block;
+  width: fit-content;
+}
+
+.search-form__textfield {
+  appearance: none;
+  color: #fff;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  background-color: rgb(27 25 25);
+  border: none;
+  border-bottom: #fff 1px solid;
+  border-top: #fff 1px solid;
+  width: 225px;
+  padding: 0;
+  height: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search-form__checkbox-list {
+  display: grid;
+  grid-template-columns: 62px 62px 62px;
+  gap: 13px;
+}
+
+.search-form__pseudo-checkbox {
+  /*Когда будете рисовать .search-form__pseudo-checkbox, учитывайте, что в нём появится элемент, который должен 
+  оказаться точно по центру. Если присмотритесь к макету, заметите, что внутренний квадрат включённого чекбокса 
+  чуть меньше самого чекбокса. Это мы сверстаем отдельно следующим шагом.*/
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  vertical-align: middle;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.button {
+font-family: 'Fira Sans Condensed';
+font-weight: 700;
+font-size: 18px;
+line-height: 30px; /* identical to box height */
+text-align: center;
+color: #fff;
+border: #fff solid 1px;
+width: 100%;
+background: rgb(27 25 25);
+cursor: pointer;
+}
+
+.search-form__submit-button {
+/*На странице две кнопки: одна в форме, другая в списке карточек. У них есть общие стили, но у кнопки в списке 
+карточек есть свои собственные. Чтобы всё сделать как надо, созданы три класса: button, search-form__submit-button 
+и more-button. Подумайте, какие стили должны быть в каждом из них.*/
+}
+
+.more-button {
+/*На странице две кнопки: одна в форме, другая в списке карточек. У них есть общие стили, но у кнопки в списке 
+карточек есть свои собственные. Чтобы всё сделать как надо, созданы три класса: button, search-form__submit-button 
+и more-button. Подумайте, какие стили должны быть в каждом из них.*/
+}
+
+.content__details {
+  display: grid;
+  width: 100%;
+  row-gap: 24px;
+}
+
+.title {
+  font-family: Oswald;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 94%; /* or 70px */
+  text-transform: uppercase;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__list {
+  position: relative;
+  display: grid;
+  gap: 30px;
+  height: 296px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content__card-link {
+  color: #fff;
+  text-decoration: none;
+}
+
 .content__video-card {
   display: grid;
-  grid-template-columns: 200px 194px;
+  grid-template-columns: 195px 195px;
   align-items: start;
+  gap: 5px;
+  padding: 2px;
+}
+
+.content__video-card-description-container {
+  height: 100%;
+}
+
+.content__video-card-title {
+  font-family: Oswald;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  margin-block-end: 4px;
+  text-transform: uppercase;
+  overflow-wrap: break-word; /*у меня была опция спрятать окончание, которое не помещается в макет,
+  но в фигме был пример с Санкт-Петербургом, который красиво размещается в две строки*/
+}
+
+.content__video-card-description {
+font-family: 'Fira Sans Condensed';
+font-weight: 400;
+font-size: 18px;
+line-height: 16px; /* or 90% */
 }
 
 .content__video-card-thumbnail {
   background-size: cover;
   width: 100%;
+  height: 103px;
   }
-
-.content__video-card-description-container {
-  height: 100%;
-}
