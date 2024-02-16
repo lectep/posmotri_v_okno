@@ -87,8 +87,24 @@ ol {
 }
 
 .search-form__label {
-  display: inline-block;
+  display: flex;
   width: fit-content;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.search-form__checkbox-list .search-form__label:hover {
+  text-decoration: underline;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #FFF;
+  outline-offset: 1px;
+}
+
+.search-form__label-text {
+  display: inline-block;
+  line-height: 18px;
 }
 
 .search-form__textfield {
@@ -105,6 +121,10 @@ ol {
   height: 100%;
 }
 
+.search-form__textfield:focus {
+  outline: none;
+}
+
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -113,23 +133,31 @@ ol {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   white-space: nowrap;
+  margin: 0;
 }
 
 .search-form__checkbox-list {
   display: grid;
   grid-template-columns: 62px 62px 62px;
   gap: 13px;
+  align-content: space-between;
 }
 
 .search-form__pseudo-checkbox {
-  /*Когда будете рисовать .search-form__pseudo-checkbox, учитывайте, что в нём появится элемент, который должен 
-  оказаться точно по центру. Если присмотритесь к макету, заметите, что внутренний квадрат включённого чекбокса 
-  чуть меньше самого чекбокса. Это мы сверстаем отдельно следующим шагом.*/
   display: inline-block;
   width: 19px;
   height: 19px;
   vertical-align: middle;
-  background-color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.search-form__pseudo-checkbox:checked {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  vertical-align: middle;
+  border: 1px solid #803535;
   cursor: pointer;
 }
 
@@ -144,6 +172,19 @@ border: #fff solid 1px;
 width: 100%;
 background: rgb(27 25 25);
 cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 1px;
+}
+
+.button:hover {
+  text-decoration: underline;
 }
 
 .search-form__submit-button {
@@ -184,6 +225,15 @@ cursor: pointer;
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+/*.content__list-item:focus {
+  outline: none;
+}
+
+.content__list-item:focus-visible {
+  outline: 1px solid #FFF;
+  outline-offset: 1px;
+}*/
 
 .content__card-link {
   color: #fff;
